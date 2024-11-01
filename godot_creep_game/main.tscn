@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://vkgq3cbk45b5"]
+[gd_scene load_steps=7 format=3 uid="uid://vkgq3cbk45b5"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_38mgf"]
 [ext_resource type="PackedScene" uid="uid://b41s66r0gxk4w" path="res://player.tscn" id="2_kgihr"]
 [ext_resource type="PackedScene" uid="uid://ctwaloxv8vdq0" path="res://mob.tscn" id="2_tx68p"]
 [ext_resource type="PackedScene" uid="uid://c3y5ls00ryfix" path="res://hud.tscn" id="4_vsqt1"]
+[ext_resource type="AudioStream" uid="uid://b2kupptv51oq6" path="res://music/410574__yummie__game-background-music-loop-short.mp3" id="5_rm72r"]
 
 [sub_resource type="Curve2D" id="Curve2D_kbexn"]
 _data = {
@@ -35,6 +36,9 @@ curve = SubResource("Curve2D_kbexn")
 [node name="MobSpawnLocation" type="PathFollow2D" parent="MobPath"]
 
 [node name="HUD" parent="." instance=ExtResource("4_vsqt1")]
+
+[node name="GameAudioPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_rm72r")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
