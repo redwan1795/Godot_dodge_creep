@@ -9,6 +9,7 @@ var score
 #var audio_files = {}
 # Variable to keep track of the currently playing AudioStreamPlayer
 var current_audio_player: AudioStreamPlayer2D
+var explode_audio_player: AudioStreamPlayer2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,9 +35,11 @@ func game_over() -> void:
 	$ScoreTimer.stop()
 	$MobTimer.stop() 
 	$HUD.show_game_over()
-	
+	explode_audio_player.play()
 	#Stop the audio when the game is over
 	stop_audio()
+	
+	
 	
 	
 func new_game():
@@ -51,6 +54,7 @@ func new_game():
 	#play_audio(background_music)
 	#play_audio("410574__yummie__game-background-music-loop-short.mp3")
 	
+	explode_audio_player = $ExplodeSound
 	current_audio_player  = $GameAudioPlayer	
 	current_audio_player.play()
 
